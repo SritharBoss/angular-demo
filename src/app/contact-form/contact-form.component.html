@@ -1,0 +1,23 @@
+<div class="bg"></div>
+<form class="myForm" ngForm #f="ngForm" style="user-select: none;">
+    <div class="form-group">
+        <label for="email">Enter your Email</label>
+        <input (copy)="logSomething(mod)" required pattern="[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\.[a-z]{2,3}" id="email"
+            class="form-control shadow-none" ngModel name="email" type="email" #mod="ngModel"
+            placeholder="example@mail.com" />
+        <div style="margin-top: 5px;" class="alert alert-danger" *ngIf="mod.touched && mod.invalid">Please Enter Valid
+            Email</div>
+    </div>
+    <div style="padding-bottom: 5px;">
+        <label for="pwd">Enter the Password</label>
+        <input required (keyup.Enter)="onEnterPress($event)" name="pwd" minlength="5" id="pwd" type="Password" placeholder="********"
+            class="form-control shadow-none" />
+    </div>
+    <div class="form-check"><label class="form-check-label"><input required class="form-check-input" ngModel
+                name="isSelected" type="checkbox"/> I Agree to the Terms & Conditions</label></div>
+
+    <div align="center">
+        <button [disabled]="!f.valid" type="Submit" class="btn btn-primary shadow-none">Submit</button>
+
+    </div>
+</form>
